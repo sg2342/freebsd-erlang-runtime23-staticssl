@@ -5,7 +5,7 @@ env:
 freebsd_instance:
   image_family: freebsd-12-1
 
-package:
+package_task:
   timeout_in: 90m
   pkg_upgrade_script:
     - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
@@ -17,7 +17,5 @@ package:
     - portsnap extract
   build_package_script:
     - env BATCH=1 PACKAGES=`pwd` __MAKE_CONF=`pwd`/make.conf make -C lang/erlang-runtime23-staticssl package
-  check_dir_script:
-    - ls -ltRr
   binaries_artifacts:
-    path: "erlang-runtime23*"
+    path: "./All/erlang-runtime23-23.0.2_1.txz"
