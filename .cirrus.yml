@@ -17,5 +17,6 @@ package_task:
     - portsnap extract
   build_package_script:
     - env BATCH=1 PACKAGES=`pwd` __MAKE_CONF=`pwd`/make.conf make -C lang/erlang-runtime23-staticssl package
+    - sha256 ./All/erlang-runtime23-23.0.2_1.txz
   binaries_artifacts:
     path: "./All/erlang-runtime23-23.0.2_1.txz"
